@@ -1048,10 +1048,8 @@ async function submitTicket(data) {
       // Demo mode — just show success (no URL configured yet)
       await new Promise(r => setTimeout(r, 800));
     } else {
-      // no-cors is required when posting from GitHub Pages to Apps Script
       await fetch(SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(data)
       });
