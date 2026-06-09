@@ -1048,11 +1048,8 @@ async function submitTicket(data) {
       // Demo mode — just show success (no URL configured yet)
       await new Promise(r => setTimeout(r, 800));
     } else {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify(data)
-      });
+      var url = SCRIPT_URL + '?payload=' + encodeURIComponent(JSON.stringify(data));
+      await fetch(url, { method: "GET", mode: "no-cors" });
     }
     document.getElementById("ticketIdDisplay").textContent = ticketId;
     goToStep("step-success");
